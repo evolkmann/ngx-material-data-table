@@ -25,8 +25,7 @@ Make sure you follow the commit message guidelines from
 
 ### Publishing new releases
 
-`npm run release -- --dry-run` to check if it would do what you intended.
-
-1. `npm run release`,
+1. `npm run build`
+1. `npm run release` (optionally with `-- --dry-run`)
 2. `git push --follow-tags origin master`
 3. `cd dist/ngx-material-data-table && npm publish`

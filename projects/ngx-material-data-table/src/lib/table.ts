@@ -8,6 +8,10 @@ import { share, startWith, switchMap, tap } from 'rxjs/operators';
 import { BaseTableConfig, ConfigToDataMapper, ConfigToShortNamesMapper, SortEventMapper } from './config';
 import { zeroBasedPageOptions, Page, defaultPageSizes } from './page';
 
+/**
+ * Compiler-Flags:
+ * - @dynamic (fixes https://github.com/ng-packagr/ng-packagr/issues/1185)
+ */
 @Directive()
 export abstract class NgxMaterialDataTable<
   DataType,
