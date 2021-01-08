@@ -5,3 +5,9 @@ node_js:
 script:
   - npm run build
   - npm run build:demo
+  - sonar-scanner
+addons:
+  sonarcloud:
+    organization: exportarts
+    token:
+      secure: "kS+8Uz17OMJBf7C5Jo/gSb048mm6UHtHZELclJPJk/qab3NNh9mRI1JgQHCaYD7uEmU4P+3IBacAHFsU7Mtuit+agxqVPqsUhP8VfpDhpYW42DnTGukO9gii5GNEk7QdD2lgHkUUoVDTxiC9GDyEPxj/0Vw4ePUjCMI1lwtIde0GK9DnTQPE0JTQk2gRzmE7AgbBVfAoukGLnVC/qLviEw6NAicq8CWYlnhpZqINBlwkwwav5zB8ca89W8w/BbmLAXhCXEGxIY6qD5UcCchVKrC22g9+3aHn2VQPmSDzrjnUJBCfDOOjjBAzQ3/KzbitVoEflkSCbUBSW3BZyqfLTSga6yeVjPj+vGSprx3DB9H7BcoixAzPn2DkjbTqsLsGQ+8LuXiaO9wZdYafEv5U6tyMXf22SJXU/k2HLeSqKzLzCxs/O+b6Nv6v5d2x5Qc0xkMuRrkK9L5psJH/+J+dynsH8X9ilcD7KgLFq5aTx+rWcdyT5NZeCLtKM54ND4wzSU3mk7qQ+S8ZUcyD8/yW1N/eOFkr2YR2LgXWBOSV43wT3MU/zoK1z2Q0VBfoIQrL6MrlFe0Aba2WcKV1xaCMlu5G/olbFkoaXyDsmpMfCGQd9m1EyCECBe5xMCdUTiSirLAsjY5sXVaekq0kqXXt2rMgKUmFGblEn0acgAqUzc4="
