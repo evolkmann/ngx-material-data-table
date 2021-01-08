@@ -1,4 +1,6 @@
-# NgxMaterialDataTable
+# ngx-material-data-table
+
+[![npm](https://img.shields.io/npm/v/ngx-material-data-table)](https://www.npmjs.com/package/ngx-material-data-table)
 
 This class enables you to create functional tables quickly based on
 [`@angular/material/table`](https://material.angular.io/components/table)
@@ -12,21 +14,30 @@ It includes the following features:
 - Clean component, just pass all options in the constructor
 - Optional select column that works across pages
 
-## Run a demo
+## Demo
+
+![demo gif](./docs/images/demo.gif)
+
+### Run it yourself
 
 1. `npm i`
 2. `npm start`
 3. Open [http://localhost:4200](http://localhost:4200)
 
-## Semantic Versioning & Releases
+## Installation
 
-Make sure you follow the commit message guidelines from
+1. Make sure you have installed all peer dependencies and that you have a working
+  [Angular Material Setup](https://material.angular.io/guide/getting-started)
+  before using this component.
+2. `npm i -E ngx-material-data-table`
+3. Integrate the library in your project [as in the demo](./projects/demo)
+
+## Contributing
+
+Contributions via issues or Pull Requests are welcome!
+
+When making commits, please follow the commit message guidelines from
 [conventionalcommits.org](https://www.conventionalcommits.org).
+This makes it easy to auto-generate a changelog.
 
-### Publishing new releases
-
-1. `npm run build` to verify it works
-2. `npm run release` (first try it with `-- --dry-run`)
-3. `git push --follow-tags origin master`
-4. `npm run build` to release the new version
-5. `cd dist/ngx-material-data-table && npm publish`
+Have a look at previous commits in this repo for examples.
