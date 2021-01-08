@@ -193,7 +193,6 @@ export abstract class NgxMaterialDataTable<
 
   private storeConfigInUrl() {
     this.configSub = this.config.pipe(
-      tap(c => console.log('update url with', c)),
       switchMap(config => this._router.navigate([], {
         queryParams: {
           [this.tableName]: BaseTableConfig.encode(config, this.configToShortNamesMapper)
