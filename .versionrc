@@ -1,0 +1,18 @@
+{
+  "packageFiles": [
+    {
+      "filename": "package.json"
+    }
+  ],
+  "bumpFiles": [
+    {
+      "filename": "package.json"
+    },
+    {
+      "filename": "projects/ngx-material-data-table/package.json"
+    },
+    {
+      "filename": "package-lock.json"
+    }
+  ]
+}
