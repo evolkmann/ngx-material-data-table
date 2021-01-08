@@ -12,6 +12,7 @@
     "prestart": "npm run build",
     "start": "ng serve --project demo",
     "build": "ng build",
+    "postbuild": "cp README.md dist/ngx-material-data-table",
     "build:demo": "ng build --project demo",
     "prepublishOnly": "npm run build",
     "release": "standard-version"
