@@ -9,6 +9,6 @@
     "@angular/animations": "^11.0.5"
   },
   "dependencies": {
-    "tslib": "^2.0.0"
+    "tslib": "2.1.0"
   }
 }
