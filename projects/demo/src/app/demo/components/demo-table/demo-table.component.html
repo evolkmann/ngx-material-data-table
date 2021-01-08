@@ -1,0 +1,48 @@
+<form [formGroup]="configForm">
+  <mat-form-field>
+    <mat-label>Minimum Age</mat-label>
+    <input matInput type="number" min="0" formControlName="minAge">
+  </mat-form-field>
+</form>
+
+<div class="overflow-scroll">
+  <table mat-table matSort [dataSource]="$any((data | async))?.results" class="w-100" (matSortChange)="onSortChange($event)">
+
+      <mdt-selection-cell [host]="host" [name]="columnNames.SELECT"></mdt-selection-cell>
+
+      <ng-container [matColumnDef]="columnNames.ID">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="min-width: 3rem;"> ID </th>
+          <td mat-cell *matCellDef="let element"> {{element.id}} </td>
+      </ng-container>
+
+      <ng-container [matColumnDef]="columnNames.NAME">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="min-width: 7rem;"> Name </th>
+          <td mat-cell *matCellDef="let element"> {{element.name}} </td>
+      </ng-container>
+
+      <ng-container [matColumnDef]="columnNames.AGE">
+          <th mat-header-cell *matHeaderCellDef mat-sort-header style="min-width: 3rem;"> Age </th>
+          <td mat-cell *matCellDef="let element"> {{element.age}} </td>
+      </ng-container>
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+</div>
+
+<mat-paginator
+  showFirstLastButtons
+  [length]="(data | async)?.totalResultsSize"
+  [pageSize]="initialPageEvent.pageSize"
+  [pageIndex]="initialPageEvent.pageIndex"
+  [pageSizeOptions]="defaultPageSizeOptions">
+</mat-paginator>
+
+<h2>Selected</h2>
+<ul *ngIf="selection.selected.length > 0; else noSelection">
+  <li *ngFor="let item of selection.selected">{{item | json}}</li>
+</ul>
+
+<ng-template #noSelection>
+  No items have been selected in the table.
+</ng-template>

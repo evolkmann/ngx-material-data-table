@@ -1,0 +1,30 @@
+<mat-progress-bar class="position-fixed" mode="indeterminate" *ngIf="data.isLoading | async"></mat-progress-bar>
+<div class="container pt-5">
+  <div class="row">
+    <div class="col">
+      <h1>ngx-material-data-table</h1>
+      <p>
+        Welcome to this demo of the <code>NgxMaterialDataTable</code> class.
+        It enables you to create functional tables quickly based on
+        <a href="https://material.angular.io/components/table/overview" target="_blank" rel="nofollow">
+          <code>@angular/material/table</code>
+        </a>
+        without the need to write a lot of boilerplate code.
+        It includes the following features:
+      </p>
+      <ul>
+        <li>Observable based data source</li>
+        <li>Extendable config based on <code>page</code>, <code>pageSize</code> and optional <code>orderBy</code></li>
+        <li>Live persistance of table config in a query param</li>
+        <li>Restoring of table config based on query param</li>
+        <li>Clean component, just pass all options in the constructor</li>
+        <li>Optional <code>select</code> column that works across pages</li>
+      </ul>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col">
+      <app-demo-table></app-demo-table>
+    </div>
+  </div>
+</div>

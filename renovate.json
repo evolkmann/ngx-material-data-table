@@ -1,0 +1,18 @@
+{
+    "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+    "extends": [
+        "config:base"
+    ],
+    "commitMessagePrefix": "chore(deps):",
+    "labels": [
+        "dependencies"
+    ],
+    "prCreation": "not-pending",
+    "reviewers": [
+        "evolkmann"
+    ],
+    "stabilityDays": 3,
+    "masterIssue": true,
+    "masterIssueAutoclose": true,
+    "prConcurrentLimit": 5
+}

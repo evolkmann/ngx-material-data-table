@@ -1,0 +1,19 @@
+<ng-container [matColumnDef]="name">
+  <th mat-header-cell *matHeaderCellDef style="padding-right: 1.5rem; padding-top: 6px">
+    <mat-checkbox
+      (change)="$event ? host?.masterToggle() : null"
+      [matBadge]="host?.selection.selected.length"
+      [matBadgeHidden]="host?.selection.selected.length === 0"
+      matBadgeSize="small"
+      [checked]="$any(host?.selection.hasValue() && (host?.isAllSelected | async))"
+      [indeterminate]="host?.selection.hasValue() && !(host?.isAllSelected | async)">
+    </mat-checkbox>
+  </th>
+  <td mat-cell *matCellDef="let row" style="padding-top: 6px">
+    <mat-checkbox
+      (click)="$event.stopPropagation()"
+      (change)="$event ? host?.toggleRowSelection(row[host?.defaultIdProperty]) : null"
+      [checked]="host?.selection.isSelected(row[host?.defaultIdProperty])">
+    </mat-checkbox>
+  </td>
+</ng-container>
