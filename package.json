@@ -1,7 +1,7 @@
 {
   "name": "ngx-material-data-table",
   "description": "Base class for creating data tables based on Angular Material",
-  "version": "0.2.0",
+  "version": "0.3.0",
   "author": "Enzo Volkmann <enzo@exportarts.io>",
   "repository": {
     "type": "git",
