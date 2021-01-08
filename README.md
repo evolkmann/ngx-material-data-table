@@ -1,6 +1,7 @@
 # ngx-material-data-table
 
 [![npm](https://img.shields.io/npm/v/ngx-material-data-table)](https://www.npmjs.com/package/ngx-material-data-table)
+[![Build Status](https://travis-ci.com/exportarts/ngx-material-data-table.svg?branch=master)](https://travis-ci.com/exportarts/ngx-material-data-table)
 
 This class enables you to create functional tables quickly based on
 [`@angular/material/table`](https://material.angular.io/components/table)
