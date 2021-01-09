@@ -15,6 +15,8 @@ It includes the following features:
 - Restoring of table config based on query param
 - Clean component, just pass all options in the constructor
 - Optional select column that works across pages
+- Reuse Angular lifecycle hooks via
+  [`NgxMaterialDataTableHooks`](./projects/ngx-material-data-table/src/lib/lifecycle-hooks.ts)
 
 ## Demo
 

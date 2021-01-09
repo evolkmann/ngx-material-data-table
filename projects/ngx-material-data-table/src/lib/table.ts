@@ -6,6 +6,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { share, startWith, switchMap, tap } from 'rxjs/operators';
 import { BaseTableConfig, BaseTableConfigShort, ConfigToDataMapper, ConfigToShortNamesMapper, decodeConfig, encodeConfig, SortEventMapper } from './config';
+import { _afterAfterViewInitActive, _afterOnDestroyActive, _afterOnInitActive, _beforeAfterViewInitActive, _beforeOnDestroyActive, _beforeOnInitActive } from './lifecycle-hooks';
 import { defaultPageSizes, Page, zeroBasedPageOptions } from './page';
 
 /**
@@ -126,6 +127,10 @@ export abstract class NgxMaterialDataTable<
   }
 
   ngOnInit() {
+    if (_beforeOnInitActive(this)) {
+      this.beforeOnInit();
+    }
+
     this.data = this.config.pipe(
       switchMap(config => this.configDataMapper(config)),
       tap(page => {
@@ -135,6 +140,10 @@ export abstract class NgxMaterialDataTable<
       }),
       share()
     );
+
+    if (_afterOnInitActive(this)) {
+      this.afterOnInit();
+    }
   }
 
   private updateIsAllSelected() {
@@ -144,16 +153,32 @@ export abstract class NgxMaterialDataTable<
   }
 
   ngAfterViewInit() {
+    if (_beforeAfterViewInitActive(this)) {
+      this.beforeAfterViewInit();
+    }
+
     this.onPaginatorChange();
     this.storeConfigInUrl();
+
+    if (_afterAfterViewInitActive(this)) {
+      this.afterAfterViewInit();
+    }
   }
 
   ngOnDestroy() {
+    if (_beforeOnDestroyActive(this)) {
+      this.beforeOnDestroy();
+    }
+
     if (this.configSub) {
       this.configSub.unsubscribe();
     }
     if (this.valueChangesSub) {
       this.valueChangesSub.unsubscribe();
+    }
+
+    if (_afterOnDestroyActive(this)) {
+      this.afterOnDestroy();
     }
   }
 
