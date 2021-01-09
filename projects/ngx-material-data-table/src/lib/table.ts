@@ -5,17 +5,37 @@ import { Sort } from '@angular/material/sort';
 import { ActivatedRoute, Router } from '@angular/router';
 import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { share, startWith, switchMap, tap } from 'rxjs/operators';
-import { BaseTableConfig, ConfigToDataMapper, ConfigToShortNamesMapper, SortEventMapper } from './config';
-import { zeroBasedPageOptions, Page, defaultPageSizes } from './page';
+import { BaseTableConfig, BaseTableConfigShort, ConfigToDataMapper, ConfigToShortNamesMapper, decodeConfig, encodeConfig, SortEventMapper } from './config';
+import { defaultPageSizes, Page, zeroBasedPageOptions } from './page';
 
 /**
- * Compiler-Flags:
- * - @dynamic (fixes https://github.com/ng-packagr/ng-packagr/issues/1185)
+ * @param {DataType} DataType
+ *    The type of data you are displaying in the table
+ * @param {ConfigType} ConfigType
+ *    When your table accepts special config params,
+ *    extend the `BaseTableConfig` interface and provide this parameter.
+ *    (ex: `interface Conf { minAge?: number; name?: string; }`)
+ * @param {ShortConfigType} ShortConfigType
+ *    To serialize the table config in the URL, you can optionally provide
+ *    an interface with the same content as `ConfigType` but with short names.
+ *    (ex: `interface ShortConf { m?: number; e?: string; }`)
+ * @param {SelectionType} SelectionType
+ *    The type of data stored in the table's selection when using the
+ *    `<mdt-selection-cell>` component. This defaults to `number`, since
+ *    most records have a numeric `id` property. If you use `uuid`s for example,
+ *    you could set this to `string`.
+ * @param {OrderByType} OrderByType
+ *    Please check the documentation of `SortEventMapper`.
+ *
+ * @see {SortEventMapper} for documentation of the `OrderByType` param.
+ *
+ * @dynamic (fixes https://github.com/ng-packagr/ng-packagr/issues/1185)
  */
 @Directive()
 export abstract class NgxMaterialDataTable<
   DataType,
   ConfigType extends BaseTableConfig = BaseTableConfig,
+  ShortConfigType extends BaseTableConfigShort = BaseTableConfigShort,
   SelectionType = number,
   OrderByType = string
 > implements OnInit, AfterViewInit, OnDestroy {
@@ -49,41 +69,46 @@ export abstract class NgxMaterialDataTable<
    */
   private readonly pageIdsStorageKey = `${NgxMaterialDataTable.name}_pageIds_`;
 
+  /**
+   * @param tableName
+   *    Unique identifier for this table inside your application.
+   *    It is used to create query params and localStorage entries.
+   *    We recommend to use an `enum`.
+   * @param router
+   *    We need a router instance to modify query params.
+   * @param route
+   *    We need the activated route to read query params.
+   * @param configDataMapper
+   *    Based on the table config, this must return an observable
+   *    with the current page data.
+   * @param sortEventMapper
+   *    Please check the documentation of `SortEventMapper`.
+   * @param configToShortNamesMapper
+   *    Please check the documentation of `ConfigToShortNamesMapper`.
+   * @param defaultConfigValues
+   *    Optionally set some default options to be applied.
+   * @param defaultPageOptions
+   *    By default, the table assumes your pagination is zero based.
+   * @param defaultIdProperty
+   *    By default, the table assumes that your records have an `id`
+   *    property to use for selections.
+   */
   constructor(
-    /**
-     * Unique identifier for this table inside your application.
-     * It is used to create query params and localStorage entries.
-     *
-     * We recommend to use an `enum`.
-     */
     protected readonly tableName: string,
-    /**
-     * We need a router instance to modify query params.
-     */
     router: Router,
-    /**
-     * We need the activated route to read query params.
-     */
     route: ActivatedRoute,
     private readonly configDataMapper: ConfigToDataMapper<ConfigType, DataType>,
     private readonly sortEventMapper?: SortEventMapper<OrderByType>,
-    private readonly configToShortNamesMapper?: ConfigToShortNamesMapper<ConfigType>,
+    private readonly configToShortNamesMapper?: ConfigToShortNamesMapper<ConfigType, ShortConfigType>,
     public readonly defaultConfigValues?: Partial<ConfigType>,
-    /**
-     * By default, the table assumes your pagination is zero based.
-     */
     private readonly defaultPageOptions = zeroBasedPageOptions,
-    /**
-     * By default, the table assumes that your records have an `id`
-     * property to use for selections.
-     */
     public readonly defaultIdProperty = 'id'
   ) {
     this.pageIdsStorageKey += this.tableName;
     this._router = router;
     this._route = route;
 
-    this.configFromUrl = BaseTableConfig.decode(this._route.snapshot.queryParams[this.tableName], this.configToShortNamesMapper) as ConfigType;
+    this.configFromUrl = decodeConfig(this._route.snapshot.queryParams[this.tableName], this.configToShortNamesMapper);
 
     this.initialPageEvent = {
       pageIndex: this.configFromUrl?.pageIndex || (defaultConfigValues?.pageIndex as number) || this.defaultPageOptions.page,
@@ -94,7 +119,7 @@ export abstract class NgxMaterialDataTable<
 
     this.config = new BehaviorSubject({
       ...(this.defaultConfigValues || {}),
-      ...this.configFromUrl,
+      ...(this.configFromUrl || {}),
       pageIndex: this.initialPageEvent.pageIndex,
       pageSize: this.initialPageEvent.pageSize
     } as ConfigType);
@@ -195,7 +220,7 @@ export abstract class NgxMaterialDataTable<
     this.configSub = this.config.pipe(
       switchMap(config => this._router.navigate([], {
         queryParams: {
-          [this.tableName]: BaseTableConfig.encode(config, this.configToShortNamesMapper)
+          [this.tableName]: encodeConfig(config, this.configToShortNamesMapper)
         },
         queryParamsHandling: 'merge',
         skipLocationChange: false,

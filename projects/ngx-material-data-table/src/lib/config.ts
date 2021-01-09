@@ -2,15 +2,13 @@ import { Sort } from '@angular/material/sort';
 import { Observable } from 'rxjs';
 import { Page } from './page';
 
-type AllKeysUndefined<T> = { [P in keyof T]: undefined; }
-
 export enum BaseTableConfigPropertyShortName {
   PAGE_INDEX = 'i',
   PAGE_SIZE = 's',
   ORDER_BY = 'o'
 }
 
-interface BaseTableConfigShort {
+export interface BaseTableConfigShort {
   [BaseTableConfigPropertyShortName.PAGE_INDEX]: BaseTableConfig['pageIndex'];
   [BaseTableConfigPropertyShortName.PAGE_SIZE]: BaseTableConfig['pageSize'];
   [BaseTableConfigPropertyShortName.ORDER_BY]: BaseTableConfig['orderBy'];
@@ -33,56 +31,68 @@ interface BaseTableConfigShort {
  *   })
  * }
  */
-export type ConfigToShortNamesMapper<T extends BaseTableConfig, S = any> = {
-  toShort: (config: Partial<T>) => S;
-  fromShort: (shortConfig: S) => Partial<T>
+export type ConfigToShortNamesMapper<ConfigType extends BaseTableConfig, ShortConfigType extends BaseTableConfigShort> = {
+  toShort: (config: ConfigType) => Omit<ShortConfigType, keyof BaseTableConfigShort>;
+  fromShort: (shortConfig: ShortConfigType) => Omit<ConfigType, keyof BaseTableConfig>;
 };
 
-export class BaseTableConfig {
+export interface BaseTableConfig {
   pageIndex?: number;
   pageSize?: number;
   orderBy?: string[];
+}
 
-  /**
-   * Use this function to store a config in the URL.
-   */
-  static encode(config: BaseTableConfig, mapper?: ConfigToShortNamesMapper<any>): string {
-    return JSON.stringify(BaseTableConfig.toShortNames(config, mapper));
-  }
+/**
+ * Use this function to store a config in the URL.
+ */
+export function encodeConfig<
+  ConfigType extends BaseTableConfig,
+  ShortConfigType extends BaseTableConfigShort
+>(config: ConfigType, mapper?: ConfigToShortNamesMapper<ConfigType, ShortConfigType>): string {
+  return JSON.stringify(toShortNames<ConfigType, ShortConfigType>(config, mapper));
+}
 
-  /**
-   * Use this function to re-construct a config obj from an encoded string.
-   */
-  static decode(config: string, mapper?: ConfigToShortNamesMapper<any>): BaseTableConfig | undefined {
-    try {
-      return BaseTableConfig.fromShortNames(JSON.parse(config), mapper);
-    } catch {
-      return undefined;
-    }
+/**
+ * Use this function to re-construct a config obj from an encoded string.
+ */
+export function decodeConfig<
+  ConfigType extends BaseTableConfig,
+  ShortConfigType extends BaseTableConfigShort
+>(config: string, mapper?: ConfigToShortNamesMapper<ConfigType, ShortConfigType>): ConfigType | undefined {
+  try {
+    return fromShortNames(JSON.parse(config), mapper) as ConfigType;
+  } catch {
+    return undefined;
   }
+}
 
-  private static toShortNames(config: BaseTableConfig, mapper?: ConfigToShortNamesMapper<any>): BaseTableConfigShort & AllKeysUndefined<BaseTableConfig> {
-    const mapped = mapper?.toShort ? mapper.toShort(config) : config;
-    return {
-      [BaseTableConfigPropertyShortName.PAGE_INDEX]: config.pageIndex,
-      [BaseTableConfigPropertyShortName.PAGE_SIZE]: config.pageSize,
-      [BaseTableConfigPropertyShortName.ORDER_BY]: config.orderBy,
-      ...mapped,
-      pageIndex: undefined,
-      pageSize: undefined,
-      orderBy: undefined
-    };
-  }
+function toShortNames<
+  ConfigType extends BaseTableConfig,
+  ShortConfigType extends BaseTableConfigShort
+>(config: ConfigType, mapper?: ConfigToShortNamesMapper<ConfigType, ShortConfigType>): ShortConfigType {
+  const mapped = mapper?.toShort ? mapper.toShort(config) : config;
+  return {
+    [BaseTableConfigPropertyShortName.PAGE_INDEX]: config.pageIndex,
+    [BaseTableConfigPropertyShortName.PAGE_SIZE]: config.pageSize,
+    [BaseTableConfigPropertyShortName.ORDER_BY]: config.orderBy,
+    ...mapped,
+    pageIndex: undefined,
+    pageSize: undefined,
+    orderBy: undefined
+  } as unknown as ShortConfigType;
+}
 
-  private static fromShortNames(config: BaseTableConfigShort, mapper?: ConfigToShortNamesMapper<any>): BaseTableConfig {
-    const mapped = mapper?.fromShort ? mapper.fromShort(config) : config;
-    return {
-      pageIndex: Number(config[BaseTableConfigPropertyShortName.PAGE_INDEX]),
-      pageSize: Number(config[BaseTableConfigPropertyShortName.PAGE_SIZE]),
-      orderBy: config[BaseTableConfigPropertyShortName.ORDER_BY],
-      ...mapped
-    }
-  }
+function fromShortNames<
+  ConfigType extends BaseTableConfig,
+  ShortConfigType extends BaseTableConfigShort
+>(config: ShortConfigType, mapper?: ConfigToShortNamesMapper<ConfigType, ShortConfigType>): ConfigType {
+  const mapped = mapper?.fromShort ? mapper.fromShort(config) : config;
+  return {
+    pageIndex: Number(config[BaseTableConfigPropertyShortName.PAGE_INDEX]),
+    pageSize: Number(config[BaseTableConfigPropertyShortName.PAGE_SIZE]),
+    orderBy: config[BaseTableConfigPropertyShortName.ORDER_BY],
+    ...mapped
+  } as ConfigType;
 }
 
 /**

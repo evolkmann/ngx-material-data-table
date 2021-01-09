@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
-import { BaseTableConfig, NgxMaterialDataTable, SortEventMapper } from 'ngx-material-data-table';
+import { BaseTableConfig, BaseTableConfigShort, ConfigToShortNamesMapper, NgxMaterialDataTable, SortEventMapper } from 'ngx-material-data-table';
 import { tap } from 'rxjs/operators';
 import { DataService, Person, PersonOrderBy } from '../../../data.service';
 
@@ -10,6 +10,14 @@ enum DisplayColumns {
   ID = 'id',
   NAME = 'first_name',
   AGE = 'last_name'
+}
+
+export interface PersonTableConfig extends BaseTableConfig {
+  minAge?: number;
+}
+
+interface PersonTableShortConfig extends BaseTableConfigShort {
+  m?: number;
 }
 
 const sortEventMapper: SortEventMapper<PersonOrderBy> = (sort, isAscending) => {
@@ -26,9 +34,14 @@ const sortEventMapper: SortEventMapper<PersonOrderBy> = (sort, isAscending) => {
   return [order];
 }
 
-export interface PersonTableConfig extends BaseTableConfig {
-  minAge?: number;
-}
+const configMapper: ConfigToShortNamesMapper<PersonTableConfig, PersonTableShortConfig> = {
+  toShort: c => ({
+    m: c.minAge
+  }),
+  fromShort: c => ({
+    minAge: c.m
+  })
+};
 
 @Component({
   selector: 'app-demo-table',
@@ -38,6 +51,7 @@ export interface PersonTableConfig extends BaseTableConfig {
 export class DemoTableComponent extends NgxMaterialDataTable<
   Person,
   PersonTableConfig,
+  PersonTableShortConfig,
   Person['id'],
   PersonOrderBy
 > {
@@ -66,14 +80,7 @@ export class DemoTableComponent extends NgxMaterialDataTable<
       route,
       config => this.service.getData(config),
       sortEventMapper,
-      {
-        toShort: c => ({
-          m: c.minAge
-        }),
-        fromShort: c => ({
-          minAge: c.m
-        })
-      }
+      configMapper
     );
 
     // Set our custom options based on parsed options from query params
