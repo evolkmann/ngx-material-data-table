@@ -14,7 +14,8 @@ It includes the following features:
 - Live persistance of table config in a query param
 - Restoring of table config based on query param
 - Clean component, just pass all options in the constructor
-- Optional select column that works across pages
+- Optional select column that works across pages via
+  [`<mdt-selection-cell>`](./projects/ngx-material-data-table/src/lib/selection-cell/selection-cell.component.ts)
 - Reuse Angular lifecycle hooks via
   [`NgxMaterialDataTableHooks`](./projects/ngx-material-data-table/src/lib/lifecycle-hooks.ts)
 
