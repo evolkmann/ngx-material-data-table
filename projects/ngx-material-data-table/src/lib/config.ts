@@ -60,7 +60,7 @@ export function decodeConfig<
   ShortConfigType extends BaseTableConfigShort
 >(config: string, mapper?: ConfigToShortNamesMapper<ConfigType, ShortConfigType>): ConfigType | undefined {
   try {
-    return fromShortNames(JSON.parse(config), mapper) as ConfigType;
+    return fromShortNames(JSON.parse(config), mapper);
   } catch {
     return undefined;
   }
