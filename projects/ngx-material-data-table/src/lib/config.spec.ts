@@ -64,8 +64,4 @@ describe('Config', () => {
       } as any);
     });
   });
-
-  describe('toShortNames()', () => {
-    expect()
-  });
 });
