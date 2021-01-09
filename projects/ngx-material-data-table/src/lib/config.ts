@@ -91,8 +91,11 @@ function fromShortNames<
     pageIndex: Number(config[BaseTableConfigPropertyShortName.PAGE_INDEX]),
     pageSize: Number(config[BaseTableConfigPropertyShortName.PAGE_SIZE]),
     orderBy: config[BaseTableConfigPropertyShortName.ORDER_BY],
-    ...mapped
-  } as ConfigType;
+    ...mapped,
+    [BaseTableConfigPropertyShortName.PAGE_INDEX]: undefined,
+    [BaseTableConfigPropertyShortName.PAGE_SIZE]: undefined,
+    [BaseTableConfigPropertyShortName.ORDER_BY]: undefined,
+  } as unknown as ConfigType;
 }
 
 /**

@@ -5,6 +5,7 @@ node_js:
 script:
   - npm run build
   - npm run build:demo
+  - npm run test
   - sonar-scanner
 addons:
   sonarcloud:
