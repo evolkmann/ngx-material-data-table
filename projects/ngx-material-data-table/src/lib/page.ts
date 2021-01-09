@@ -1,4 +1,4 @@
-export interface Page<T = any> {
+export interface Page<T> {
   results: T[];
   totalResultsSize: number;
 }
