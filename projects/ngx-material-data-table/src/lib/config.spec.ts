@@ -38,8 +38,8 @@ describe('Config', () => {
       n: conf.name,
       o: conf.orderBy
     };
-    encodedWithoutMapper = `{\"i\":${conf.pageIndex},\"s\":${conf.pageSize},\"o\":[\"${conf.orderBy![0]}\"],\"name\":\"${conf.name}\"}`;
-    encodedWithMapper = `{\"i\":${conf.pageIndex},\"s\":${conf.pageSize},\"o\":[\"${conf.orderBy![0]}\"],\"n\":\"${conf.name}\"}`;
+    encodedWithoutMapper = `{\"name\":\"${conf.name}\",\"i\":${conf.pageIndex},\"s\":${conf.pageSize},\"o\":[\"${conf.orderBy![0]}\"]}`;
+    encodedWithMapper = `{\"n\":\"${conf.name}\",\"i\":${conf.pageIndex},\"s\":${conf.pageSize},\"o\":[\"${conf.orderBy![0]}\"]}`;
   });
 
   describe('encodeConfig()', () => {

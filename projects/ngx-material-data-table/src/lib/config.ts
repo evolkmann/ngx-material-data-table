@@ -72,10 +72,10 @@ function toShortNames<
 >(config: ConfigType, mapper?: ConfigToShortNamesMapper<ConfigType, ShortConfigType>): ShortConfigType {
   const mapped = mapper?.toShort ? mapper.toShort(config) : config;
   return {
+    ...mapped,
     [BaseTableConfigPropertyShortName.PAGE_INDEX]: config.pageIndex,
     [BaseTableConfigPropertyShortName.PAGE_SIZE]: config.pageSize,
     [BaseTableConfigPropertyShortName.ORDER_BY]: config.orderBy,
-    ...mapped,
     pageIndex: undefined,
     pageSize: undefined,
     orderBy: undefined
