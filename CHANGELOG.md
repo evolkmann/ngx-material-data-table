@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.1](https://github.com/exportarts/ngx-material-data-table/compare/v1.0.0...v1.0.1) (2021-01-17)
+
+
+### Bug Fixes
+
+* **config:** transform toShortNames() in the corerct order ([c58ccb4](https://github.com/exportarts/ngx-material-data-table/commit/c58ccb4c8969f1a43846369a8e5736d5258465d1))
+
 ## [1.0.0](https://github.com/exportarts/ngx-material-data-table/compare/v0.3.0...v1.0.0) (2021-01-09)
 
 
