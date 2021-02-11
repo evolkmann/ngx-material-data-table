@@ -38,7 +38,7 @@
     "@angular/cli": "11.1.4",
     "@angular/compiler-cli": "11.1.1",
     "@types/jest": "26.0.20",
-    "@types/node": "12.19.15",
+    "@types/node": "12.19.16",
     "codelyzer": "6.0.1",
     "jest": "26.6.3",
     "ng-packagr": "11.1.2",
