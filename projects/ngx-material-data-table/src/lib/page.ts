@@ -15,13 +15,19 @@ export const defaultPageSizes = [
   50
 ]
 
+/**
+ * Represents page options where the first page is `0`.
+ */
 export const zeroBasedPageOptions: PageOptions = {
   page: 0,
   pageSize: defaultPageSizes[0]
 }
 
+/**
+ * Represents page options where the first page is `1`.
+ */
 export const oneBasedPageOptions: PageOptions = {
-  page: 0,
+  page: 1,
   pageSize: defaultPageSizes[0]
 }
 
