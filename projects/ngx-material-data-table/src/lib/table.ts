@@ -68,7 +68,7 @@ export abstract class NgxMaterialDataTable<
    * We store the IDs on the current page to check if all options
    * are selected (for the checkbox in the header row).
    */
-  private readonly pageIdsStorageKey = `${NgxMaterialDataTable.name}_pageIds_`;
+  private readonly pageIdsStorageKey = `ngx_material_data_table_page_ids_`;
 
   /**
    * @param tableName
