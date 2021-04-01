@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.3](https://github.com/exportarts/ngx-material-data-table/compare/v1.0.2...v1.0.3) (2021-04-01)
+
+
+### Bug Fixes
+
+* **localstorage:** hard-code the prefix for storage keys ([6b0453c](https://github.com/exportarts/ngx-material-data-table/commit/6b0453c92d1c38d7edcd00348d21344760ad4def))
+
 ### [1.0.2](https://github.com/exportarts/ngx-material-data-table/compare/v1.0.1...v1.0.2) (2021-03-22)
 
 
