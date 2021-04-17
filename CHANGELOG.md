@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.1.0](https://github.com/exportarts/ngx-material-data-table/compare/v1.0.3...v1.1.0) (2021-04-17)
+
+
+### Features
+
+* **utils:** add offsetPaginationVariables ([218bdf6](https://github.com/exportarts/ngx-material-data-table/commit/218bdf6e061210739e9e38a0885356b141a60cd8))
+
 ### [1.0.3](https://github.com/exportarts/ngx-material-data-table/compare/v1.0.2...v1.0.3) (2021-04-01)
 
 
