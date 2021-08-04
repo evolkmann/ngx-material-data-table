@@ -41,7 +41,7 @@
     "@types/node": "16.0.1",
     "codelyzer": "6.0.2",
     "jest": "27.0.6",
-    "ng-packagr": "12.1.0",
+    "ng-packagr": "12.2.0",
     "protractor": "7.0.0",
     "standard-version": "9.3.0",
     "ts-jest": "27.0.3",
