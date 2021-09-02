@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { share, startWith, switchMap, tap } from 'rxjs/operators';
 import { BaseTableConfig, BaseTableConfigShort, ConfigToDataMapper, ConfigToShortNamesMapper, decodeConfig, encodeConfig, SortEventMapper } from './config';
 import { _afterAfterViewInitActive, _afterOnDestroyActive, _afterOnInitActive, _beforeAfterViewInitActive, _beforeOnDestroyActive, _beforeOnInitActive } from './lifecycle-hooks';
-import { defaultPageSizes, Page, zeroBasedPageOptions } from './page';
+import { defaultPageSizes, Page, PageOptions, zeroBasedPageOptions } from './page';
 
 /**
  * @param {DataType} DataType
@@ -112,8 +112,12 @@ export abstract class NgxMaterialDataTable<
     this.configFromUrl = decodeConfig(this._route.snapshot.queryParams[this.tableName], this.configToShortNamesMapper);
 
     this.initialPageEvent = {
-      pageIndex: this.configFromUrl?.pageIndex || (defaultConfigValues?.pageIndex as number) || this.defaultPageOptions.page,
-      pageSize: this.configFromUrl?.pageSize || (defaultConfigValues?.pageSize as number) || this.defaultPageOptions.pageSize,
+      pageIndex: typeof this.configFromUrl?.pageIndex === 'number'
+        ? this.configFromUrl.pageIndex
+        : (typeof defaultConfigValues?.pageIndex === 'number' ? defaultConfigValues.pageIndex : this.defaultPageOptions.page),
+      pageSize: typeof this.configFromUrl?.pageSize === 'number'
+        ? this.configFromUrl.pageSize
+        : (typeof defaultConfigValues?.pageSize === 'number' ? defaultConfigValues.pageSize : this.defaultPageOptions.pageSize),
       length: 0,
       previousPageIndex: undefined
     };
