@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.1.2](https://github.com/exportarts/ngx-material-data-table/compare/v1.1.1...v1.1.2) (2021-12-30)
+
+
+### Bug Fixes
+
+* **table:** properly check if page settings are provided ([11e9dbd](https://github.com/exportarts/ngx-material-data-table/commit/11e9dbd5adb51f99088da7bf9c5380b05aefec16))
+
 ### [1.1.1](https://github.com/exportarts/ngx-material-data-table/compare/v1.1.0...v1.1.1) (2021-07-08)
 
 ## [1.1.0](https://github.com/exportarts/ngx-material-data-table/compare/v1.0.3...v1.1.0) (2021-04-17)
