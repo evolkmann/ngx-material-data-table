@@ -49,6 +49,10 @@ export abstract class NgxMaterialDataTable<
 
   private configSub?: Subscription;
   private valueChangesSub?: Subscription;
+  /**
+   * Indicates if `ngOnInit()` has passed.
+   */
+  private initialized = false;
 
   readonly initialPageEvent: PageEvent;
   readonly defaultPageSizeOptions = defaultPageSizes;
@@ -148,6 +152,8 @@ export abstract class NgxMaterialDataTable<
     if (_afterOnInitActive(this)) {
       this.afterOnInit();
     }
+
+    this.initialized = true;
   }
 
   private updateIsAllSelected() {
@@ -216,6 +222,43 @@ export abstract class NgxMaterialDataTable<
       this.selection.select(...pageIds);
     }
     this.updateIsAllSelected();
+  }
+
+  /**
+   * When using Angular `Inputs()`, use this function to populate the config
+   * instead of manually calling `this.config.next()`;
+   *
+   * It will use the encoded value from the URL if possible when the component
+   * is first loaded. After `ngOnInit()` has run, the input-provided value will
+   * always be used and the URL-encoded value will be ignored.
+   *
+   * @param key The key of the config object to populate
+   * @param inputValue The value received in your `@Input` setter
+   * @param shouldUseValueFromUrl An expression to determine of the value from
+   *   the URL is valid, for example if it is not null.
+   *
+   * @example
+   * ```ts
+   * @Input()
+   * set myInput(value: boolean) {
+   *   this.safelySetConfigProperty<boolean | undefined>(
+   *     'myConfigKey',
+   *     value,
+   *     valueFromUrl => typeof valueFromUrl === 'boolean'
+   *   );
+   * }
+   * ```
+   */
+  protected safelySetConfigProperty<InputType = any>(
+    key: keyof ConfigType,
+    inputValue: InputType,
+    shouldUseValueFromUrl: (val: InputType) => boolean = () => false
+  ): void {
+    const useValueFromUrl = !this.initialized && shouldUseValueFromUrl((this.configFromUrl as any)?.[key]);
+    this.config.next({
+      ...this.config.value,
+      [key]: useValueFromUrl ? this.configFromUrl?.[key] : inputValue
+    });
   }
 
   private onPaginatorChange() {
