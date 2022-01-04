@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/exportarts/ngx-material-data-table/compare/v1.2.0...v1.3.0) (2022-01-04)
+
+
+### Features
+
+* **table:** add `configChange` event emitter ([8b32941](https://github.com/exportarts/ngx-material-data-table/commit/8b32941bb5d9a101a47be3b2cdd6dedc1940b7f3))
+
 ## [1.2.0](https://github.com/exportarts/ngx-material-data-table/compare/v1.1.3-pre.0...v1.2.0) (2022-01-04)
 
 
