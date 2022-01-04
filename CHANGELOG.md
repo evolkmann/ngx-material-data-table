@@ -9,19 +9,15 @@ All notable changes to this project will be documented in this file. See [standa
 
 * **table:** add `safelySetConfigProperty ` ([f714131](https://github.com/exportarts/ngx-material-data-table/commit/f7141312d6a3da646d310182044365dd432ddc8c))
 
-### [1.1.3-pre.0](https://github.com/exportarts/ngx-material-data-table/compare/v1.1.2...v1.1.3-pre.0) (2022-01-04)
 
 ### [1.1.2](https://github.com/exportarts/ngx-material-data-table/compare/v1.1.1...v1.1.2) (2021-12-30)
-
 
 ### Bug Fixes
 
 * **table:** properly check if page settings are provided ([11e9dbd](https://github.com/exportarts/ngx-material-data-table/commit/11e9dbd5adb51f99088da7bf9c5380b05aefec16))
 
-### [1.1.1](https://github.com/exportarts/ngx-material-data-table/compare/v1.1.0...v1.1.1) (2021-07-08)
 
 ## [1.1.0](https://github.com/exportarts/ngx-material-data-table/compare/v1.0.3...v1.1.0) (2021-04-17)
-
 
 ### Features
 
@@ -59,9 +55,3 @@ All notable changes to this project will be documented in this file. See [standa
 ### Bug Fixes
 
 * **page:** make type param required ([5a38bf6](https://github.com/exportarts/ngx-material-data-table/commit/5a38bf6007e1330a1cc938a235ac8c6a92d85e33))
-
-## [0.3.0](https://github.com/exportarts/ngx-material-data-table/compare/v0.2.0...v0.3.0) (2021-01-08)
-
-## [0.2.0](https://github.com/exportarts/ngx-material-data-table/compare/v0.1.1...v0.2.0) (2021-01-08)
-
-### 0.1.1 (2021-01-08)
