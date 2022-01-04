@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { AfterViewInit, Directive, OnDestroy, OnInit, ViewChild } from '@angular/core';
+import { AfterViewInit, Directive, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -7,7 +7,7 @@ import { BehaviorSubject, Observable, Subscription } from 'rxjs';
 import { share, startWith, switchMap, tap } from 'rxjs/operators';
 import { BaseTableConfig, BaseTableConfigShort, ConfigToDataMapper, ConfigToShortNamesMapper, decodeConfig, encodeConfig, SortEventMapper } from './config';
 import { _afterAfterViewInitActive, _afterOnDestroyActive, _afterOnInitActive, _beforeAfterViewInitActive, _beforeOnDestroyActive, _beforeOnInitActive } from './lifecycle-hooks';
-import { defaultPageSizes, Page, PageOptions, zeroBasedPageOptions } from './page';
+import { defaultPageSizes, Page, zeroBasedPageOptions } from './page';
 
 /**
  * @param {DataType} DataType
@@ -61,6 +61,12 @@ export abstract class NgxMaterialDataTable<
 
   @ViewChild(MatPaginator, { static: true })
   paginator?: MatPaginator;
+
+  /**
+   * Emitted each time the table config changes.
+   */
+  @Output()
+  readonly configChange = new EventEmitter<ConfigType>();
 
   /**
    * Please use `toggleRowSelection()` instead of
@@ -290,6 +296,7 @@ export abstract class NgxMaterialDataTable<
 
   private storeConfigInUrl() {
     this.configSub = this.config.pipe(
+      tap(config => this.configChange.emit(config)),
       switchMap(config => this._router.navigate([], {
         queryParams: {
           [this.tableName]: encodeConfig(config, this.configToShortNamesMapper)
