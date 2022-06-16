@@ -148,6 +148,5 @@
     }},
   "cli": {
     "analytics": "d7895628-9023-4cea-ac3d-b689ffb47565"
-  },
-  "defaultProject": "ngx-material-data-table"
+  }
 }

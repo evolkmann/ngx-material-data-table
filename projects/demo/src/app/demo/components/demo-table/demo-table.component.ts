@@ -58,7 +58,7 @@ export class DemoTableComponent extends NgxMaterialDataTable<
   host = this;
 
   readonly configForm = new FormGroup({
-    minAge: new FormControl(null, Validators.min(0))
+    minAge: new FormControl<number | null>(null, Validators.min(0))
   });
 
   readonly columnNames = DisplayColumns;
