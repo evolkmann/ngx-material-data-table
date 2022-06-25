@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.2](https://github.com/exportarts/ngx-material-data-table/compare/v1.3.1...v1.3.2) (2022-06-25)
+
+
+### Bug Fixes
+
+* update peer dependencies to work with ng 13/14 ([cc3570f](https://github.com/exportarts/ngx-material-data-table/commit/cc3570f91fd8bf723968305fbb70ecbe25469c84))
+
 ### [1.3.1](https://github.com/exportarts/ngx-material-data-table/compare/v1.3.0...v1.3.1) (2022-06-25)
 
 ## [1.3.0](https://github.com/exportarts/ngx-material-data-table/compare/v1.2.0...v1.3.0) (2022-01-04)
