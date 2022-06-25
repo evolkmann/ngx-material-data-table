@@ -40,7 +40,7 @@
     "@types/jest": "26.0.24",
     "@types/node": "16.11.41",
     "codelyzer": "6.0.2",
-    "jest": "27.0.6",
+    "jest": "27.5.1",
     "ng-packagr": "14.0.2",
     "protractor": "7.0.0",
     "standard-version": "9.3.2",
