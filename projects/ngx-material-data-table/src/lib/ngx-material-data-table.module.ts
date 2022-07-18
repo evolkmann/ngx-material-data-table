@@ -1,8 +1,8 @@
+import { CdkTableModule } from '@angular/cdk/table';
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { MatBadgeModule } from '@angular/material/badge';
 import { MatCheckboxModule } from '@angular/material/checkbox';
-import { MatTableModule } from '@angular/material/table';
 import { SelectionCellComponent } from './selection-cell/selection-cell.component';
 
 @NgModule({
@@ -12,7 +12,7 @@ import { SelectionCellComponent } from './selection-cell/selection-cell.componen
   imports: [
     MatBadgeModule,
     MatCheckboxModule,
-    MatTableModule,
+    CdkTableModule,
     CommonModule
   ],
   exports: [

@@ -1,5 +1,5 @@
+import { CdkColumnDef, CdkTable } from '@angular/cdk/table';
 import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
-import { MatColumnDef, MatTable } from '@angular/material/table';
 import { NgxMaterialDataTable } from '../table';
 
 @Component({
@@ -9,8 +9,8 @@ import { NgxMaterialDataTable } from '../table';
 })
 export class SelectionCellComponent implements OnInit {
 
-  @ViewChild(MatColumnDef)
-  columnDef!: MatColumnDef;
+  @ViewChild(CdkColumnDef)
+  columnDef!: CdkColumnDef;
 
   /**
    * A reference to the host table.
@@ -31,13 +31,13 @@ export class SelectionCellComponent implements OnInit {
   private _name!: string;
 
   /**
-   * The name of the underlying `MatColumnDef`.
+   * The name of the underlying `CdkColumnDef`.
    *
    * @example ```html
    * <mdt-selection-cell [host]="host" name="select"></mdt-selection-cell>
    * ```
    *
-   * @see MatColumnDef
+   * @see CdkColumnDef
    */
   @Input()
   get name(): string {
@@ -52,7 +52,7 @@ export class SelectionCellComponent implements OnInit {
 
   constructor(
     private readonly changeDetector: ChangeDetectorRef,
-    public table: MatTable<any>
+    public table: CdkTable<any>
   ) { }
 
   ngOnInit() {
