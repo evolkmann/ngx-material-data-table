@@ -1,8 +1,10 @@
 <ng-container [cdkColumnDef]="name">
   <th mat-header-cell *cdkHeaderCellDef scope="col">
     <mat-checkbox
+      [color]="matCheckboxColor"
       (change)="$event ? host?.masterToggle() : null"
       [matBadge]="host?.selection.selected.length"
+      [matBadgeColor]="matBadgeColor"
       [matBadgeHidden]="host?.selection.selected.length === 0"
       matBadgeSize="small"
       [checked]="$any(host?.selection.hasValue() && (host?.isAllSelected | async))"
@@ -11,6 +13,7 @@
   </th>
   <td mat-cell *cdkCellDef="let row">
     <mat-checkbox
+      [color]="matCheckboxColor"
       (click)="$event.stopPropagation()"
       (change)="$event ? host?.toggleRowSelection(row[host?.defaultIdProperty]) : null"
       [checked]="host?.selection.isSelected(row[host?.defaultIdProperty])">

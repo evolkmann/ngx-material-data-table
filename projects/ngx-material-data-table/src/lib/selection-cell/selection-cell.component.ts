@@ -1,5 +1,6 @@
 import { CdkColumnDef, CdkTable } from '@angular/cdk/table';
 import { ChangeDetectorRef, Component, Input, OnInit, ViewChild } from '@angular/core';
+import { ThemePalette } from '@angular/material/core';
 import { NgxMaterialDataTable } from '../table';
 
 @Component({
@@ -27,6 +28,12 @@ export class SelectionCellComponent implements OnInit {
    */
   @Input()
   host?: NgxMaterialDataTable<any>
+
+  @Input()
+  matCheckboxColor?: ThemePalette;
+
+  @Input()
+  matBadgeColor?: ThemePalette;
 
   private _name!: string;
 
