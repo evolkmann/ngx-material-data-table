@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.4.0](https://github.com/exportarts/ngx-material-data-table/compare/v1.3.3...v1.4.0) (2022-07-18)
+
+
+### Features
+
+* **selection-cell:** make badge and checkbox color configurable ([71ee139](https://github.com/exportarts/ngx-material-data-table/commit/71ee139a26c1ea5a3fcce61b1e79a57872c28d82))
+
 ### [1.3.3](https://github.com/exportarts/ngx-material-data-table/compare/v1.3.2...v1.3.3) (2022-07-18)
 
 
