@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.3.3](https://github.com/exportarts/ngx-material-data-table/compare/v1.3.2...v1.3.3) (2022-07-18)
+
+
+### Bug Fixes
+
+* depend on `Cdk`-components to lift `Mat`-Dependencies ([fe3bd6f](https://github.com/exportarts/ngx-material-data-table/commit/fe3bd6f1bed36bf1e4266a4b2a7488c2ce4bcdae))
+
 ### [1.3.2](https://github.com/exportarts/ngx-material-data-table/compare/v1.3.1...v1.3.2) (2022-06-25)
 
 
