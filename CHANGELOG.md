@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.5.0](https://github.com/exportarts/ngx-material-data-table/compare/v1.4.0...v1.5.0) (2022-07-22)
+
+
+### Features
+
+* **selection-cell:** add ability to hide badge ([667f04a](https://github.com/exportarts/ngx-material-data-table/commit/667f04a7b8806d5ef2e3f85b5f1953db30727a25))
+
 ## [1.4.0](https://github.com/exportarts/ngx-material-data-table/compare/v1.3.3...v1.4.0) (2022-07-18)
 
 
