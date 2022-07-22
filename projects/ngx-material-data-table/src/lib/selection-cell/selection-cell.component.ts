@@ -35,6 +35,9 @@ export class SelectionCellComponent implements OnInit {
   @Input()
   matBadgeColor?: ThemePalette;
 
+  @Input()
+  hideBadge = false;
+
   private _name!: string;
 
   /**

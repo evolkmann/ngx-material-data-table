@@ -4,6 +4,7 @@
       [color]="matCheckboxColor"
       (change)="$event ? host?.masterToggle() : null"
       [matBadge]="host?.selection.selected.length"
+      [matBadgeDisabled]="hideBadge"
       [matBadgeColor]="matBadgeColor"
       [matBadgeHidden]="host?.selection.selected.length === 0"
       matBadgeSize="small"
