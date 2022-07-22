@@ -4,9 +4,8 @@
       [color]="matCheckboxColor"
       (change)="$event ? host?.masterToggle() : null"
       [matBadge]="host?.selection.selected.length"
-      [matBadgeDisabled]="hideBadge"
       [matBadgeColor]="matBadgeColor"
-      [matBadgeHidden]="host?.selection.selected.length === 0"
+      [matBadgeHidden]="hideBadge || host?.selection.selected.length === 0"
       matBadgeSize="small"
       [checked]="$any(host?.selection.hasValue() && (host?.isAllSelected | async))"
       [indeterminate]="host?.selection.hasValue() && !(host?.isAllSelected | async)">
