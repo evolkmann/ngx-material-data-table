@@ -19,16 +19,16 @@
     "release": "standard-version"
   },
   "dependencies": {
-    "@angular/animations": "14.2.2",
+    "@angular/animations": "14.2.4",
     "@angular/cdk": "14.2.2",
-    "@angular/common": "14.2.2",
-    "@angular/compiler": "14.2.2",
-    "@angular/core": "14.2.2",
-    "@angular/forms": "14.2.2",
+    "@angular/common": "14.2.4",
+    "@angular/compiler": "14.2.4",
+    "@angular/core": "14.2.4",
+    "@angular/forms": "14.2.4",
     "@angular/material": "14.2.2",
-    "@angular/platform-browser": "14.2.2",
-    "@angular/platform-browser-dynamic": "14.2.2",
-    "@angular/router": "14.2.2",
+    "@angular/platform-browser": "14.2.4",
+    "@angular/platform-browser-dynamic": "14.2.4",
+    "@angular/router": "14.2.4",
     "rxjs": "7.5.7",
     "tslib": "2.4.0",
     "zone.js": "0.11.8"
@@ -36,7 +36,7 @@
   "devDependencies": {
     "@angular-devkit/build-angular": "14.2.3",
     "@angular/cli": "14.2.3",
-    "@angular/compiler-cli": "14.2.2",
+    "@angular/compiler-cli": "14.2.4",
     "@types/jest": "26.0.24",
     "@types/node": "16.11.59",
     "codelyzer": "6.0.2",
