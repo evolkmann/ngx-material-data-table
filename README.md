@@ -1,8 +1,7 @@
 # ngx-material-data-table
 
-[![npm](https://img.shields.io/npm/v/ngx-material-data-table)](https://www.npmjs.com/package/ngx-material-data-table)
-[![Build Status](https://github.com/exportarts/ngx-material-data-table/workflows/ci/badge.svg)](https://github.com/exportarts/ngx-material-data-table/actions)
-[![Quality Gate Status](https://sonarcloud.io/api/project_badges/measure?project=exportarts_ngx-material-data-table&metric=alert_status)](https://sonarcloud.io/dashboard?id=exportarts_ngx-material-data-table)
+[![npm](https://img.shields.io/npm/v/@volkmann-design-code/ngx-material-data-table)](https://www.npmjs.com/package/@volkmann-design-code/ngx-material-data-table)
+[![Build Status](https://github.com/evolkmann/ngx-material-data-table/workflows/ci/badge.svg)](https://github.com/evolkmann/ngx-material-data-table/actions)
 
 This class enables you to create functional tables quickly based on
 [`@angular/material/table`](https://material.angular.io/components/table)
