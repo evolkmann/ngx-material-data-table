@@ -46,3 +46,11 @@ When making commits, please follow the commit message guidelines from
 This makes it easy to auto-generate a changelog.
 
 Have a look at previous commits in this repo for examples.
+
+## Publishing
+
+To make a new version:
+
+- `npx standard-version --dry-run` (use appropriate options for the desired release and remove dry run)
+- `git push --follow-tags origin master`
+- `npm publish --access public`
