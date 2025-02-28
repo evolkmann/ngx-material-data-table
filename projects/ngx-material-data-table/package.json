@@ -9,11 +9,11 @@
   "license": "MIT",
   "version": "1.5.2",
   "peerDependencies": {
-    "@angular/common": "^12.1.1 || ^13.0.0 || ^14.0.0 || ^13.0.0 || ^14.0.0",
-    "@angular/core": "^12.1.1 || ^13.0.0 || ^14.0.0",
-    "@angular/cdk": "^12.1.1 || ^13.0.0 || ^14.0.0",
-    "@angular/material": "^12.1.1 || ^13.0.0 || ^14.0.0",
-    "@angular/animations": "^12.1.1 || ^13.0.0 || ^14.0.0"
+    "@angular/common": "^15.0.0",
+    "@angular/core": "^15.0.0",
+    "@angular/cdk": "^15.0.0",
+    "@angular/material": "^15.0.0",
+    "@angular/animations": "^15.0.0"
   },
   "dependencies": {
     "tslib": "2.4.0"
