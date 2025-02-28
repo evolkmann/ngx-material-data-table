@@ -13,7 +13,7 @@
     "experimentalDecorators": true,
     "moduleResolution": "node",
     "importHelpers": true,
-    "target": "es2020",
+    "target": "ES2022",
     "module": "es2020",
     "lib": [
       "es2018",
@@ -21,10 +21,10 @@
     ],
     "paths": {
       "ngx-material-data-table": [
-        // "dist/ngx-material-data-table/ngx-material-data-table",
         "dist/ngx-material-data-table"
       ]
-    }
+    },
+    "useDefineForClassFields": false
   },
   "angularCompilerOptions": {
     "strictInjectionParameters": false,
