@@ -8,6 +8,7 @@
     "url": "https://github.com/evolkmann/ngx-material-data-table"
   },
   "license": "MIT",
+  "main": "dist/ngx-material-data-table",
   "scripts": {
     "prestart": "ng build --project ngx-material-data-table",
     "start": "ng serve --project demo",
