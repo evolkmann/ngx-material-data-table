@@ -21,7 +21,7 @@
     ],
     "paths": {
       "ngx-material-data-table": [
-        "dist/ngx-material-data-table"
+        "./dist/ngx-material-data-table"
       ]
     },
     "useDefineForClassFields": false
