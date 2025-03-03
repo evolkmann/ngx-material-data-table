@@ -52,4 +52,5 @@ To make a new version:
 
 - `npx standard-version --dry-run` (use appropriate options for the desired release and remove dry run)
 - `git push --follow-tags origin master`
+- `npm run build`
 - `npm publish --access public`
