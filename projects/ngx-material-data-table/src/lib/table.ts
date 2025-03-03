@@ -1,5 +1,5 @@
 import { SelectionModel } from '@angular/cdk/collections';
-import { AfterViewInit, Directive, EventEmitter, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
+import { AfterViewInit, Directive, EventEmitter, inject, OnDestroy, OnInit, Output, ViewChild } from '@angular/core';
 import { MatPaginator, PageEvent } from '@angular/material/paginator';
 import { Sort } from '@angular/material/sort';
 import { ActivatedRoute, Router } from '@angular/router';
@@ -41,8 +41,8 @@ export abstract class NgxMaterialDataTable<
   OrderByType = string
 > implements OnInit, AfterViewInit, OnDestroy {
 
-  protected readonly _router: Router;
-  protected readonly _route: ActivatedRoute;
+  protected readonly router = inject(Router);
+  protected readonly route = inject(ActivatedRoute);
 
   protected readonly configFromUrl: ConfigType | undefined;
   protected readonly config: BehaviorSubject<ConfigType>;
@@ -85,10 +85,6 @@ export abstract class NgxMaterialDataTable<
    *    Unique identifier for this table inside your application.
    *    It is used to create query params and localStorage entries.
    *    We recommend to use an `enum`.
-   * @param router
-   *    We need a router instance to modify query params.
-   * @param route
-   *    We need the activated route to read query params.
    * @param configDataMapper
    *    Based on the table config, this must return an observable
    *    with the current page data.
@@ -104,10 +100,8 @@ export abstract class NgxMaterialDataTable<
    *    By default, the table assumes that your records have an `id`
    *    property to use for selections.
    */
-  constructor(
+  protected constructor(
     protected readonly tableName: string,
-    router: Router,
-    route: ActivatedRoute,
     private readonly configDataMapper: ConfigToDataMapper<ConfigType, DataType>,
     private readonly sortEventMapper?: SortEventMapper<OrderByType>,
     private readonly configToShortNamesMapper?: ConfigToShortNamesMapper<ConfigType, ShortConfigType>,
@@ -116,10 +110,8 @@ export abstract class NgxMaterialDataTable<
     public readonly defaultIdProperty = 'id'
   ) {
     this.pageIdsStorageKey += this.tableName;
-    this._router = router;
-    this._route = route;
 
-    this.configFromUrl = decodeConfig(this._route.snapshot.queryParams[this.tableName], this.configToShortNamesMapper);
+    this.configFromUrl = decodeConfig(this.route.snapshot.queryParams[this.tableName], this.configToShortNamesMapper);
 
     this.initialPageEvent = {
       pageIndex: typeof this.configFromUrl?.pageIndex === 'number'
@@ -297,7 +289,7 @@ export abstract class NgxMaterialDataTable<
   private storeConfigInUrl() {
     this.configSub = this.config.pipe(
       tap(config => this.configChange.emit(config)),
-      switchMap(config => this._router.navigate([], {
+      switchMap(config => this.router.navigate([], {
         queryParams: {
           [this.tableName]: encodeConfig(config, this.configToShortNamesMapper)
         },

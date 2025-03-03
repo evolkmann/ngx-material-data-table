@@ -1,6 +1,5 @@
 import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
-import { ActivatedRoute, Router } from '@angular/router';
 import { BaseTableConfig, BaseTableConfigShort, ConfigToShortNamesMapper, NgxMaterialDataTable, SortEventMapper } from 'ngx-material-data-table';
 import { tap } from 'rxjs/operators';
 import { DataService, Person, PersonOrderBy } from '../../../data.service';
@@ -70,14 +69,10 @@ export class DemoTableComponent extends NgxMaterialDataTable<
   ];
 
   constructor(
-    route: ActivatedRoute,
-    router: Router,
     private readonly service: DataService
   ) {
     super(
       'persons',
-      router,
-      route,
       config => this.service.getData(config),
       sortEventMapper,
       configMapper
