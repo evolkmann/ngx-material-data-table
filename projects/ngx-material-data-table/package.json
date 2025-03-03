@@ -7,7 +7,7 @@
     "url": "https://github.com/exportarts/ngx-material-data-table"
   },
   "license": "MIT",
-  "version": "2.0.0",
+  "version": "2.0.1",
   "peerDependencies": {
     "@angular/common": "^18.0.0",
     "@angular/core": "^18.0.0",
