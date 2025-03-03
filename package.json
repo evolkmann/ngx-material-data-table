@@ -9,6 +9,7 @@
   },
   "license": "MIT",
   "main": "dist/ngx-material-data-table/esm2022/ngx-material-data-table.mjs",
+  "typings": "dist/ngx-material-data-table/index.d.ts",
   "scripts": {
     "prestart": "ng build --project ngx-material-data-table",
     "start": "ng serve --project demo",
