@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [2.0.9](https://github.com/evolkmann/ngx-material-data-table/compare/v2.0.8...v2.0.9) (2025-03-04)
+
+
+### Bug Fixes
+
+* point to correct bundle file ([51694ca](https://github.com/evolkmann/ngx-material-data-table/commit/51694ca8dd16e551627c906362ae00cc1e4acadf))
+
 ### [2.0.8](https://github.com/evolkmann/ngx-material-data-table/compare/v2.0.7...v2.0.8) (2025-03-04)
 
 ### [2.0.7](https://github.com/evolkmann/ngx-material-data-table/compare/v2.0.6...v2.0.7) (2025-03-03)
