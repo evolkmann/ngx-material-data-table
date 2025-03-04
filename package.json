@@ -20,7 +20,13 @@
     "prepublishOnly": "npm run build",
     "release": "standard-version"
   },
-  "peerDependencies": {},
+  "peerDependencies": {
+    "@angular/animations": "^18.2.0 || ^19.2.0",
+    "@angular/cdk": "^18.2.0 || ^19.2.1",
+    "@angular/common": "^18.2.0 || ^19.2.0",
+    "@angular/core": "^18.2.0 || ^19.2.0",
+    "@angular/material": "^18.2.0 || ^19.2.1"
+  },
   "devDependencies": {
     "@angular-devkit/build-angular": "19.2.0",
     "@angular/animations": "19.2.0",
