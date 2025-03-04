@@ -43,9 +43,10 @@ const configMapper: ConfigToShortNamesMapper<PersonTableConfig, PersonTableShort
 };
 
 @Component({
-  selector: 'app-demo-table',
-  templateUrl: './demo-table.component.html',
-  styleUrls: ['./demo-table.component.scss'],
+    selector: 'app-demo-table',
+    templateUrl: './demo-table.component.html',
+    styleUrls: ['./demo-table.component.scss'],
+    standalone: false
 })
 export class DemoTableComponent extends NgxMaterialDataTable<
   Person,

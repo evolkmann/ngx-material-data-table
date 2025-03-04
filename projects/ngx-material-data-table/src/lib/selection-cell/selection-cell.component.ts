@@ -4,9 +4,10 @@ import { ThemePalette } from '@angular/material/core';
 import { NgxMaterialDataTable } from '../table';
 
 @Component({
-  selector: 'mdt-selection-cell',
-  templateUrl: './selection-cell.component.html',
-  styleUrls: ['./selection-cell.component.scss']
+    selector: 'mdt-selection-cell',
+    templateUrl: './selection-cell.component.html',
+    styleUrls: ['./selection-cell.component.scss'],
+    standalone: false
 })
 export class SelectionCellComponent implements OnInit {
 
