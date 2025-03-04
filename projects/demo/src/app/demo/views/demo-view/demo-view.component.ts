@@ -2,9 +2,10 @@ import { Component, OnInit } from '@angular/core';
 import { DataService } from '../../../data.service';
 
 @Component({
-  selector: 'app-demo-view',
-  templateUrl: './demo-view.component.html',
-  styleUrls: ['./demo-view.component.scss']
+    selector: 'app-demo-view',
+    templateUrl: './demo-view.component.html',
+    styleUrls: ['./demo-view.component.scss'],
+    standalone: false
 })
 export class DemoViewComponent implements OnInit {
 
